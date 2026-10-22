@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@layer utilities {
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes rainbowShift {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes bgGradientLoop {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes flagWave {
+    0% {
+      transform: perspective(400px) rotateY(0deg) skewY(0deg) translateY(0);
+    }
+    25% {
+      transform: perspective(400px) rotateY(16deg) skewY(2.5deg) translateY(-1px);
+    }
+    50% {
+      transform: perspective(400px) rotateY(0deg) skewY(0deg) translateY(0);
+    }
+    75% {
+      transform: perspective(400px) rotateY(-16deg) skewY(-2.5deg) translateY(1px);
+    }
+    100% {
+      transform: perspective(400px) rotateY(0deg) skewY(0deg) translateY(0);
+    }
+  }
+
+  @keyframes clothRipple {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .animate-gradient-text {
+    background-size: 200% auto;
+    animation: gradientShift 4s ease infinite;
+  }
+
+  .animate-rainbow-text {
+    background-size: 300% auto;
+    animation: gradientShift 3s linear infinite, rainbowShift 8s linear infinite;
+  }
+
+  .animate-flag-wave {
+    animation: flagWave 2.6s ease-in-out infinite;
+  }
+
+  .animate-cloth-ripple {
+    animation: clothRipple 1.8s linear infinite;
+  }
+
+  .animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 35s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  .animate-bg-loop {
+    background: linear-gradient(135deg, #07080c, #091e3a, #1e1b4b, #0f172a, #07080c);
+    background-size: 400% 400%;
+    animation: bgGradientLoop 15s ease infinite;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
