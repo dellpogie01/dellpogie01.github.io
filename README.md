@@ -1,39 +1,52 @@
-# JuanMediaHubPH — Android Developer Portfolio
+# Delio Labaddan — Android & Web Developer Portfolio
 
-A professional, interactive developer portfolio website showcasing Android apps created by JuanMediaHubPH with vibrant cyan/violet neon styling, an interactive Three.js 3D Android device hero, searchable app showcase, screenshot modal carousel, and Gemini AI assistant & generative studio tools.
+A modern, high-performance single-page developer portfolio featuring an interactive Three.js 3D Android device hero, 48 3D embossed tech stack badges spanning retro DOS to modern cloud/mobile, animated physics neon green mouse gravity particles, and curated Android app showcases.
 
-## Features
-- **Responsive Navigation**: Translucent navbar with scroll progress indicator, mobile menu, and theme toggle (persisted via `localStorage`).
-- **Three.js 3D Hero**: Interactive 3D floating Android phone model built with studio PBR lighting (`RoomEnvironment`, `ACESFilmicToneMapping`) and smooth rotation.
-- **App Showcase**: Filter apps by category (*Education*, *Games*, *Productivity*, *Lifestyle*) or search by keywords.
-- **Initial Projects**: *Colors of Faith*, *Holy Bible KJV 1611*, *Pic To PDF*, *MedsAlarm*, *CapybaRun*, *GALA*, and *SoloChess3D*. Publication statuses default to `"Add publication status"`.
-- **App Details Modal**: Accessible modal with screenshot carousel (previous/next controls, keyboard support), feature list, and conditional Google Play / GitHub links.
-- **Juan AI Assistant Studio**: Integrated Gemini chat interface with high thinking mode toggle, plus an AI concept and asset generator.
-- **Contact & Footer**: Direct links to GitHub (`https://github.com/dellpogie01`) and email.
+## 🚀 Live Demo
+Once deployed to GitHub Pages, the site will be live at:
+- **`https://dellpogie01.github.io/`** (if repo is named `dellpogie01.github.io`)
+- or **`https://dellpogie01.github.io/<repo-name>/`**
 
-## Getting Started
+---
 
-### Prerequisites
-- Node.js (v18+)
-- npm
+## 🛠️ Tech Stack & Highlights
+- **Vite & React 19**: Ultra-fast bundling with relative base path configured for zero-configuration GitHub Pages hosting.
+- **Three.js PBR 3D Hero**: Interactive, continuously rotating 3D Android smartphone model with high-gloss camera lenses, metallic bevel accents, and embossed glowing Android emblem.
+- **Physics Neon Gravity Particles**: Canvas-based orbital particle system where glowing neon green dots swarm, orbit, and respond to your cursor with gravitational physics and shockwave click interactions.
+- **Retro-to-Modern 3D Tech Stack**: 48 custom 3D skeuomorphic circular badges honoring a journey from DOS era tools (C, Turbo Pascal, Clipper, FoxPro) through modern stacks (Android, Kotlin, TypeScript, React, Python).
+- **Tailwind CSS v4**: Fluid typography, responsive grid layout, and vibrant animated neon gradient accents.
 
-### Installation & Development
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Run development server:
-   ```bash
-   npm run dev
-   ```
-3. Open `http://localhost:3000` in your browser.
+---
 
-### Building for Production
+## 📦 Local Development
+
 ```bash
-npm run build
+# Install dependencies
+bun install   # or npm install
+
+# Start local development server
+bun run dev   # or npm run dev
 ```
 
-## Customization Guide
-- **Edit Branding & Bio**: Update `src/components/About.tsx` and `src/components/Hero.tsx`.
-- **Edit Portfolio Projects**: Update `src/data/appsData.ts` to add/edit apps, features, screenshots, publication statuses, and Google Play URLs.
-- **Configure Gemini API**: Set `GEMINI_API_KEY` in your `.env` file or AI Studio secrets panel.
+Build for production:
+```bash
+bun run build # or npm run build
+```
+
+---
+
+## 🌐 Deploy to GitHub Pages (Automated via GitHub Actions)
+
+This repository includes a pre-configured automated GitHub Actions workflow (`.github/workflows/deploy.yml`).
+
+### Setup Steps:
+1. Create a new repository on your GitHub account (`dellpogie01`).
+2. Add your remote and push:
+   ```bash
+   git remote add origin https://github.com/dellpogie01/<YOUR_REPO_NAME>.git
+   git push -u origin main
+   ```
+3. In your GitHub repository:
+   - Navigate to **Settings** > **Pages**.
+   - Under **Build and deployment** > **Source**, select **GitHub Actions**.
+4. GitHub Actions will automatically run the build and publish your portfolio live!
