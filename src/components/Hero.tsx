@@ -560,10 +560,21 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
 
       const handleResize = () => {
         if (!container) return;
-        camera.aspect = container.clientWidth / container.clientHeight;
+        const aspect = container.clientWidth / container.clientHeight;
+        camera.aspect = aspect;
+        if (aspect < 0.85) {
+          camera.position.z = 8.8;
+        } else if (aspect < 1.25) {
+          camera.position.z = 8.2;
+        } else {
+          camera.position.z = 7.8;
+        }
         camera.updateProjectionMatrix();
         renderer.setSize(container.clientWidth, container.clientHeight);
       };
+
+      // Call initial resize to align with container dimensions
+      handleResize();
 
       window.addEventListener('resize', handleResize);
 
@@ -582,35 +593,66 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
   }, []);
 
   return (
-    <section id="hero" className="relative w-full min-h-screen pt-28 sm:pt-32 lg:pt-20 pb-4 flex flex-col justify-center">
+    <section id="hero" className="relative w-full min-h-screen pt-24 sm:pt-28 lg:pt-20 pb-8 sm:pb-12 lg:pb-4 flex flex-col justify-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col justify-center">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+        {/* Responsive Grid: 
+            On Mobile: Title -> 3D Hero Phone -> Showcase & Tech Stack -> Coffee & Connect
+            On Tablet & Desktop: 2 Columns side-by-side (Left: Text & Tech Stack, Right: Full Height 3D Phone)
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6 lg:gap-8 items-start">
           
-          {/* Main Left Content Column: Title, Subtitle, App Icons, Tech Stack, Coffee & Code, Let's Connect */}
-          <div className="lg:col-span-7 space-y-3.5 text-left flex flex-col items-start">
-            
-            {/* Title & Subtitle Section: Additional space in between email and "Small Ideas. Meaningful Apps." */}
-            <div className="w-full text-left pt-12 sm:pt-14 lg:pt-16">
-              {/* "Small Ideas. Meaningful Apps." with plenty of space below so 'g' and 'pp' are never cut */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-extrabold tracking-tight leading-[1.25] sm:leading-[1.2] pb-2 flex flex-wrap items-baseline gap-x-3 text-left">
-                <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-500 bg-clip-text text-transparent animate-gradient-text whitespace-nowrap pb-1 inline-block">
-                  Small Ideas.
-                </span>
-                <span className="bg-gradient-to-r from-cyan-400 via-violet-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent animate-gradient-text whitespace-nowrap pb-1 inline-block">
-                  Meaningful Apps.
-                </span>
-              </h1>
+          {/* Section 1: Title & Subtitle (Row 1 Left on tablet/desktop, Top on mobile) */}
+          <div className="md:col-span-7 w-full text-left pt-6 sm:pt-10 lg:pt-16">
+            {/* "Small Ideas. Meaningful Apps." with plenty of space below so 'g' and 'pp' are never cut */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight leading-[1.25] sm:leading-[1.2] pb-1.5 sm:pb-2 flex flex-wrap items-baseline gap-x-2.5 sm:gap-x-3 text-left">
+              <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-500 bg-clip-text text-transparent animate-gradient-text whitespace-nowrap pb-1 inline-block">
+                Small Ideas.
+              </span>
+              <span className="bg-gradient-to-r from-cyan-400 via-violet-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent animate-gradient-text whitespace-nowrap pb-1 inline-block">
+                Meaningful Apps.
+              </span>
+            </h1>
 
-              {/* Subtitle placed immediately near title, with NO empty line space in between */}
-              <p className="mt-0.5 text-sm sm:text-base text-slate-300 max-w-2xl mx-0 text-left font-light leading-snug bg-gradient-to-r from-cyan-300 via-pink-300 to-violet-300 bg-clip-text text-transparent animate-rainbow-text">
-                Discover my collection of Android apps, games, and everyday tools.
-              </p>
+            {/* Subtitle placed immediately near title */}
+            <p className="mt-0.5 text-xs sm:text-sm lg:text-base text-slate-300 max-w-2xl mx-0 text-left font-light leading-snug bg-gradient-to-r from-cyan-300 via-pink-300 to-violet-300 bg-clip-text text-transparent animate-rainbow-text">
+              Discover my collection of Android apps, games, and everyday tools.
+              <span className="text-[11px] font-mono text-cyan-400/80 sm:hidden ml-1">• Swipe apps below ➔</span>
+            </p>
+          </div>
+
+          {/* Section 2: 3D Hero Phone Canvas
+              On Mobile: Sits right below Title & Subtitle for instant interactive 3D gratification
+              On Tablet & Desktop: Occupies the right column (col-span-5) spanning both rows to the top of screen
+          */}
+          <div className="md:col-span-5 md:row-span-2 w-full flex flex-col items-center justify-center lg:-mt-20 md:-mt-8 my-2 md:my-0 relative pointer-events-auto">
+            <div className="relative w-full h-[280px] sm:h-[340px] md:h-[500px] lg:h-[calc(100vh-1rem)] min-h-[260px] md:min-h-[460px] max-h-[880px] flex items-center justify-center">
+              <div 
+                ref={mountRef} 
+                className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing touch-none select-none" 
+                title="Drag to rotate phone in 3D"
+              />
+              {!webglSupported && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/90 rounded-3xl border border-cyan-500/30 p-6 text-center">
+                  <Smartphone className="w-12 h-12 text-cyan-400 mb-2 animate-pulse" />
+                  <h3 className="font-bold text-base text-white mb-1">JuanMediaHubPH Phone</h3>
+                  <p className="text-xs text-slate-400 font-mono">Android Device Preview</p>
+                </div>
+              )}
             </div>
+            {/* Mobile & Tablet Interactive Rotation Hint */}
+            <div className="flex md:hidden items-center gap-1.5 text-[11px] font-mono text-cyan-400/70 mt-1 pointer-events-none">
+              <span>👆</span>
+              <span>Drag to rotate 3D phone</span>
+            </div>
+          </div>
 
-            {/* App Showcase Icons below "Discover..." (All 10 icons in 1 horizontal line at 3/4 size, NO zoom hover overlap) */}
+          {/* Section 3: App Showcase, Tech Stack, Coffee & Connect (Row 2 Left on tablet/desktop, Below 3D phone on mobile) */}
+          <div className="md:col-span-7 space-y-3.5 sm:space-y-4 text-left flex flex-col items-start w-full">
+            
+            {/* App Showcase Icons below "Discover..." (All 10 icons in 1 horizontal line at 3/4 size, touch-scrollable) */}
             <div className="w-full pt-0.5">
-              <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-0.5">
+              <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-1 px-0.5 touch-pan-x">
                 {[
                   { src: `${import.meta.env.BASE_URL}apps/ph-map.png`, alt: 'Philippine 3D Location Map' },
                   { src: `${import.meta.env.BASE_URL}apps/bible-kjv.jpg`, alt: 'Holy Bible KJV 1611 3D' },
@@ -625,7 +667,8 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="relative w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-xl overflow-hidden border border-cyan-400/40 bg-slate-900/90 shadow-[0_3px_8px_rgba(0,0,0,0.5),0_1px_2px_rgba(6,182,212,0.3)] hover:border-cyan-300 hover:shadow-cyan-400/50 transition-colors duration-200 cursor-pointer flex-shrink-0"
+                    title={item.alt}
+                    className="relative w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-xl overflow-hidden border border-cyan-400/40 bg-slate-900/90 shadow-[0_3px_8px_rgba(0,0,0,0.5),0_1px_2px_rgba(6,182,212,0.3)] hover:border-cyan-300 hover:shadow-cyan-400/50 transition-colors duration-200 cursor-pointer flex-shrink-0 active:scale-95"
                   >
                     <img 
                       src={item.src} 
@@ -640,38 +683,38 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
             </div>
 
             {/* MY TECH STACK Section: Clear space above heading, exact same font and font size with DELIO LABADDAN */}
-            <div className="w-full pt-3.5 sm:pt-4 space-y-1.5">
-              <h2 className="font-extrabold text-lg sm:text-xl lg:text-2xl tracking-tight bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-500 bg-clip-text text-transparent animate-gradient-text leading-tight">
+            <div className="w-full pt-2 sm:pt-3 lg:pt-3.5 space-y-1.5">
+              <h2 className="font-extrabold text-base sm:text-xl lg:text-2xl tracking-tight bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-500 bg-clip-text text-transparent animate-gradient-text leading-tight">
                 MY TECH STACK
               </h2>
               <TechStack3DGrid />
             </div>
 
-            {/* Coffee & Code and Let's Connect: Clear space between tech stack icons and "Coffee & Code" */}
-            <div className="w-full pt-3.5 sm:pt-4 flex flex-col gap-1.5 text-left">
-              {/* Coffee & Code in 1 line */}
-              <div className="flex items-center gap-2 text-xs sm:text-[13px] text-slate-300 font-light truncate">
+            {/* Coffee & Code and Let's Connect: Responsive lines that wrap cleanly on mobile */}
+            <div className="w-full pt-2 sm:pt-3 lg:pt-3.5 flex flex-col gap-2 text-left">
+              {/* Coffee & Code */}
+              <div className="flex flex-wrap lg:flex-nowrap items-baseline gap-1.5 text-xs sm:text-[13px] text-slate-300 font-light leading-relaxed">
                 <span className="font-bold text-amber-400 whitespace-nowrap flex items-center gap-1.5 flex-shrink-0">
                   <span>☕</span>
                   <span>Coffee & Code:</span>
                 </span>
-                <span className="text-slate-300 whitespace-nowrap overflow-hidden text-ellipsis">
+                <span className="text-slate-300 lg:whitespace-nowrap lg:overflow-hidden lg:text-ellipsis">
                   If you enjoy my apps and want to support what I build, a coffee is always appreciated.
                 </span>
               </div>
 
-              {/* Let's Connect in 1 line below Coffee & Code */}
-              <div className="flex items-center gap-2 text-xs sm:text-[13px] text-slate-300 font-light truncate">
+              {/* Let's Connect */}
+              <div className="flex flex-wrap lg:flex-nowrap items-baseline gap-1.5 text-xs sm:text-[13px] text-slate-300 font-light leading-relaxed">
                 <span className="font-bold text-cyan-400 whitespace-nowrap flex items-center gap-1.5 flex-shrink-0">
                   <span>⚡</span>
                   <span>Let’s Connect:</span>
                 </span>
-                <span className="text-slate-300 whitespace-nowrap overflow-hidden text-ellipsis">
+                <span className="text-slate-300 lg:whitespace-nowrap lg:overflow-hidden lg:text-ellipsis">
                   Have an idea, found a bug, or tried one of my apps? I’d love to hear from you.
                 </span>
                 <a 
                   href="mailto:juanmediahubph@gmail.com" 
-                  className="inline-flex items-center gap-1 text-cyan-400 font-mono text-[11px] hover:text-cyan-300 hover:underline whitespace-nowrap flex-shrink-0 ml-1"
+                  className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 font-mono text-[11px] hover:bg-cyan-500/20 hover:text-cyan-300 transition-colors whitespace-nowrap flex-shrink-0"
                 >
                   <span>Send Message</span>
                   <span>→</span>
@@ -679,24 +722,6 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
               </div>
             </div>
 
-          </div>
-
-          {/* Right Column: Hero Phone extending unobstructed to the top of the screen */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center lg:-mt-20 -mt-6 relative pointer-events-auto">
-            <div className="relative w-full h-[540px] sm:h-[640px] lg:h-[calc(100vh-1rem)] min-h-[500px] max-h-[880px] flex items-center justify-center">
-              <div 
-                ref={mountRef} 
-                className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing touch-none select-none" 
-                title="Drag to rotate phone in 3D"
-              />
-              {!webglSupported && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/90 rounded-3xl border border-cyan-500/30 p-6 text-center">
-                  <Smartphone className="w-16 h-16 text-cyan-400 mb-3 animate-pulse" />
-                  <h3 className="font-bold text-lg text-white mb-1">JuanMediaHubPH Phone</h3>
-                  <p className="text-xs text-slate-400 font-mono">Android Device Preview</p>
-                </div>
-              )}
-            </div>
           </div>
 
         </div>

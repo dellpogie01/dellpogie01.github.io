@@ -48,8 +48,9 @@ export const MouseGravityParticles: React.FC = () => {
       { core: '#ffffff', dot: '#10b981', glow: '#34d399' }  // Bright Mint Neon
     ];
 
-    // Spawn 55 physics particles
-    const particleCount = 55;
+    // Spawn responsive physics particles (32 on mobile, 55 on desktop for optimal 60fps)
+    const isMobile = width < 768;
+    const particleCount = isMobile ? 32 : 55;
     const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {
@@ -120,10 +121,10 @@ export const MouseGravityParticles: React.FC = () => {
 
       // If mouse is idle for > 2.5 seconds or not moved yet, gently float attractor in a graceful figure-eight
       if (!attractor.isMouseActive || Date.now() - attractor.lastInteractionTime > 2500) {
-        const cx = width * 0.62;
-        const cy = height * 0.45;
-        attractor.targetX = cx + Math.sin(elapsed * 0.8) * (width * 0.22);
-        attractor.targetY = cy + Math.sin(elapsed * 1.6) * 110;
+        const cx = width < 768 ? width * 0.5 : width * 0.62;
+        const cy = width < 768 ? height * 0.38 : height * 0.45;
+        attractor.targetX = cx + Math.sin(elapsed * 0.8) * (width * (width < 768 ? 0.28 : 0.22));
+        attractor.targetY = cy + Math.sin(elapsed * 1.6) * (width < 768 ? 70 : 110);
       }
 
       // Smooth lag towards target attractor (feels like a heavy gravity well)
