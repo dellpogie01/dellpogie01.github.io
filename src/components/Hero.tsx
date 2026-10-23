@@ -650,7 +650,7 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
           {/* Section 3: App Showcase, Tech Stack, Coffee & Connect (Row 2 Left on tablet/desktop, Below 3D phone on mobile) */}
           <div className="md:col-span-7 space-y-3.5 sm:space-y-4 text-left flex flex-col items-start w-full">
             
-            {/* App Showcase Icons below "Discover..." (All 10 icons in 1 horizontal line at 3/4 size, touch-scrollable) */}
+            {/* App Showcase Icons below "Discover..." (All icons in 1 horizontal line at 3/4 size, touch-scrollable) */}
             <div className="w-full pt-0.5">
               <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-1 px-0.5 touch-pan-x">
                 {[
@@ -660,6 +660,7 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
                   { src: `${import.meta.env.BASE_URL}apps/house-3d.jpg`, alt: 'Modern 3D Architecture House' },
                   { src: `${import.meta.env.BASE_URL}apps/business-growth.png`, alt: 'Business Growth Trend Charts' },
                   { src: `${import.meta.env.BASE_URL}apps/ai-brain.png`, alt: 'AI Brain Assistant' },
+                  { src: `${import.meta.env.BASE_URL}apps/ai-ecosystem.png`, alt: 'AI Ecosystem & Models' },
                   { src: `${import.meta.env.BASE_URL}apps/business-life.png`, alt: 'Business Tycoon Life' },
                   { src: `${import.meta.env.BASE_URL}apps/capybara-game.png`, alt: 'Capybara Forest Adventure' },
                   { src: `${import.meta.env.BASE_URL}apps/pill-reminder.png`, alt: 'Rx Pill & Medicine Reminder' },
