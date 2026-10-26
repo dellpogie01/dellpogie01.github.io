@@ -655,7 +655,6 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
               <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-1 px-0.5 touch-pan-x">
                 {[
                   { src: `${import.meta.env.BASE_URL}apps/ph-map.png`, alt: 'Philippine 3D Location Map' },
-                  { src: `${import.meta.env.BASE_URL}apps/bible-kjv.jpg`, alt: 'Holy Bible KJV 1611 3D' },
                   { src: `${import.meta.env.BASE_URL}apps/praying-kids.jpg`, alt: 'Praying Kids Golden Cross' },
                   { src: `${import.meta.env.BASE_URL}apps/house-3d.jpg`, alt: 'Modern 3D Architecture House' },
                   { src: `${import.meta.env.BASE_URL}apps/business-growth.png`, alt: 'Business Growth Trend Charts' },
