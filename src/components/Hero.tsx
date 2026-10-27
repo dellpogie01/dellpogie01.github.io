@@ -654,6 +654,7 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
             <div className="w-full pt-0.5">
               <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-1 px-0.5 touch-pan-x">
                 {[
+                  { src: `${import.meta.env.BASE_URL}apps/simple-compass.png`, alt: 'Simple Compass' },
                   { src: `${import.meta.env.BASE_URL}apps/qr-studio.png`, alt: 'QR Studio' },
                   { src: `${import.meta.env.BASE_URL}apps/password-mgr.png`, alt: 'Password Manager' },
                   { src: `${import.meta.env.BASE_URL}apps/ph-map.png`, alt: 'Philippine 3D Location Map' },
