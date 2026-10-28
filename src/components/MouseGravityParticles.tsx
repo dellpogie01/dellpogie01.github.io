@@ -48,9 +48,9 @@ export const MouseGravityParticles: React.FC = () => {
       { core: '#ffffff', dot: '#10b981', glow: '#34d399' }  // Bright Mint Neon
     ];
 
-    // Spawn responsive physics particles (32 on mobile, 55 on desktop for optimal 60fps)
+    // Spawn responsive physics particles (85 on mobile, 160 on desktop for rich particle density)
     const isMobile = width < 768;
-    const particleCount = isMobile ? 32 : 55;
+    const particleCount = isMobile ? 85 : 160;
     const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {
