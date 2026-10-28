@@ -654,6 +654,7 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
             <div className="w-full pt-0.5">
               <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-1 px-0.5 touch-pan-x">
                 {[
+                  { src: `${import.meta.env.BASE_URL}apps/learn-oop.png`, alt: 'Learn OOP with Kotlin' },
                   { src: `${import.meta.env.BASE_URL}apps/touchscreen-test.png`, alt: 'Touchscreen Test Tool' },
                   { src: `${import.meta.env.BASE_URL}apps/pocket-gizmo.png`, alt: 'PocketGizmo' },
                   { src: `${import.meta.env.BASE_URL}apps/wifi-meter.png`, alt: 'WiFi Meter' },
