@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { CircuitBoardBackground } from './components/CircuitBoardBackground';
 import { MouseGravityParticles } from './components/MouseGravityParticles';
 
 export default function App() {
@@ -26,7 +25,6 @@ export default function App() {
 
   return (
     <div className={`min-h-screen relative flex flex-col justify-between transition-colors duration-300 bg-[#07080c]/60 backdrop-blur-[2px] ${darkMode ? 'text-slate-100' : 'text-slate-900'}`}>
-      <CircuitBoardBackground />
       <MouseGravityParticles />
 
       <div className="flex-1 flex flex-col">

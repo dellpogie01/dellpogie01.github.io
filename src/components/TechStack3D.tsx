@@ -480,78 +480,20 @@ export const techStackData: TechItem[] = [
 ];
 
 export const TechStack3DGrid: React.FC = () => {
-  const [activeTech, setActiveTech] = React.useState<string | null>(null);
-
-  // Split exactly into four (4) rows for desktop
-  const chunkSize = Math.ceil(techStackData.length / 4);
-  const row1 = techStackData.slice(0, chunkSize);
-  const row2 = techStackData.slice(chunkSize, chunkSize * 2);
-  const row3 = techStackData.slice(chunkSize * 2, chunkSize * 3);
-  const row4 = techStackData.slice(chunkSize * 3);
-
-  const renderIconItem = (tech: TechItem, idx: number) => {
-    const isSelected = activeTech === tech.name;
-    return (
-      <div
-        key={`${tech.name}-${idx}`}
-        title={tech.name}
-        onClick={() => setActiveTech(isSelected ? null : tech.name)}
-        className={`group relative w-8.5 h-8.5 sm:w-9.5 sm:h-9.5 lg:w-10 lg:h-10 rounded-full bg-gradient-to-br ${tech.bgGradient} border ${isSelected ? 'border-cyan-300 ring-2 ring-cyan-400/50 scale-105' : tech.borderColor} p-1 flex items-center justify-center shadow-[0_3px_0_rgba(0,0,0,0.55),0_6px_12px_rgba(0,0,0,0.5),inset_0_1.5px_1.5px_rgba(255,255,255,0.45)] hover:border-cyan-300 hover:shadow-cyan-500/30 transition-all duration-200 cursor-pointer select-none flex-shrink-0 active:scale-95`}
-      >
-        {/* 3D Round Top Gloss Specular Highlight */}
-        <div className="absolute inset-x-1 top-0.5 h-1/2 rounded-full bg-gradient-to-b from-white/40 to-transparent pointer-events-none" />
-
-        {/* 3D Center Emblem */}
-        <div className="relative z-10 flex items-center justify-center w-full h-full px-0.5 overflow-visible">
-          {tech.renderIcon()}
-        </div>
-      </div>
-    );
-  };
-
   return (
-    <div className="w-full flex flex-col gap-1.5">
-      {/* Mobile & Tablet active badge readout */}
-      {activeTech && (
-        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900/90 border border-cyan-400/50 text-xs font-mono text-cyan-300 w-fit shadow-md shadow-cyan-950/40 animate-fadeIn">
-          <span className="text-amber-400">⚡</span>
-          <span className="text-slate-300 font-sans text-[11px]">Selected:</span>
-          <span className="font-bold text-white">{activeTech}</span>
-          <button 
-            type="button"
-            onClick={() => setActiveTech(null)} 
-            className="ml-1.5 text-slate-400 hover:text-white px-1 text-sm font-bold"
-            aria-label="Close"
-          >
-            ×
-          </button>
-        </div>
-      )}
-
-      {/* Desktop View: strictly four (4) neat horizontal lines */}
-      <div className="hidden lg:flex flex-col gap-1.5 w-full pt-0.5">
-        {/* Line 1 */}
-        <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-0.5">
-          {row1.map((tech, idx) => renderIconItem(tech, idx))}
-        </div>
-        {/* Line 2 */}
-        <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-0.5">
-          {row2.map((tech, idx) => renderIconItem(tech, idx + chunkSize))}
-        </div>
-        {/* Line 3 */}
-        <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-0.5">
-          {row3.map((tech, idx) => renderIconItem(tech, idx + chunkSize * 2))}
-        </div>
-        {/* Line 4 */}
-        <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-0.5">
-          {row4.map((tech, idx) => renderIconItem(tech, idx + chunkSize * 3))}
-        </div>
-      </div>
-
-      {/* Mobile & Tablet View: fluid responsive wrapped grid with zero horizontal cutoff */}
-      <div className="flex lg:hidden flex-wrap gap-1.5 sm:gap-2 justify-start items-center w-full py-1">
-        {techStackData.map((tech, idx) => renderIconItem(tech, idx))}
-      </div>
+    <div className="w-full text-left font-mono text-xs sm:text-[13px] lg:text-sm leading-relaxed text-slate-300 py-1 select-text">
+      {techStackData.map((tech, idx) => (
+        <React.Fragment key={tech.name}>
+          <span className="text-slate-200 hover:text-cyan-300 transition-colors inline-block font-medium">
+            {tech.name}
+          </span>
+          {idx < techStackData.length - 1 && (
+            <span className="text-cyan-400 font-bold mx-1.5 sm:mx-2 select-none">
+              *
+            </span>
+          )}
+        </React.Fragment>
+      ))}
     </div>
   );
 };
