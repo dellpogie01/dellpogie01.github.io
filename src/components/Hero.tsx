@@ -660,16 +660,16 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
                   { src: `${import.meta.env.BASE_URL}apps/simple-compass.png`, alt: 'Simple Compass' },
                   { src: `${import.meta.env.BASE_URL}apps/qr-studio.png`, alt: 'QR Studio' },
                   { src: `${import.meta.env.BASE_URL}apps/password-mgr.png`, alt: 'Password Manager' },
-                  { src: `${import.meta.env.BASE_URL}apps/ph-map.png`, alt: 'Philippine 3D Location Map' },
-                  { src: `${import.meta.env.BASE_URL}apps/praying-kids.jpg`, alt: 'Praying Kids Golden Cross' },
-                  { src: `${import.meta.env.BASE_URL}apps/house-3d.jpg`, alt: 'Modern 3D Architecture House' },
-                  { src: `${import.meta.env.BASE_URL}apps/business-growth.png`, alt: 'Business Growth Trend Charts' },
-                  { src: `${import.meta.env.BASE_URL}apps/ai-brain.png`, alt: 'AI Brain Assistant' },
-                  { src: `${import.meta.env.BASE_URL}apps/ai-ecosystem.png`, alt: 'AI Ecosystem & Models' },
-                  { src: `${import.meta.env.BASE_URL}apps/business-life.png`, alt: 'Business Tycoon Life' },
-                  { src: `${import.meta.env.BASE_URL}apps/capybara-game.png`, alt: 'Capybara Forest Adventure' },
-                  { src: `${import.meta.env.BASE_URL}apps/pill-reminder.png`, alt: 'Rx Pill & Medicine Reminder' },
-                  { src: `${import.meta.env.BASE_URL}apps/pdf-scanner.png`, alt: 'Smart Camera PDF Scanner' }
+                  { src: `${import.meta.env.BASE_URL}apps/ph-map.png`, alt: 'Gala App' },
+                  { src: `${import.meta.env.BASE_URL}apps/praying-kids.jpg`, alt: 'Colors of Faith' },
+                  { src: `${import.meta.env.BASE_URL}apps/house-3d.jpg`, alt: 'Santevi Community App' },
+                  { src: `${import.meta.env.BASE_URL}apps/business-growth.png`, alt: 'Manager101' },
+                  { src: `${import.meta.env.BASE_URL}apps/ai-brain.png`, alt: 'AI Academy' },
+                  { src: `${import.meta.env.BASE_URL}apps/ai-ecosystem.png`, alt: 'Which AI Should I Use' },
+                  { src: `${import.meta.env.BASE_URL}apps/business-life.png`, alt: 'BossVsLeader' },
+                  { src: `${import.meta.env.BASE_URL}apps/capybara-game.png`, alt: 'CapybaRun' },
+                  { src: `${import.meta.env.BASE_URL}apps/pill-reminder.png`, alt: 'MedsAlarm' },
+                  { src: `${import.meta.env.BASE_URL}apps/pdf-scanner.png`, alt: 'Pic to PDF' }
                 ].map((item, idx) => (
                   <div
                     key={idx}
