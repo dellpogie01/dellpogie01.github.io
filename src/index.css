@@ -71,13 +71,11 @@
   }
 
   .animate-gradient-text {
-    background-size: 200% auto;
-    animation: gradientShift 4s ease infinite;
+    background-size: 100% auto;
   }
 
   .animate-rainbow-text {
-    background-size: 300% auto;
-    animation: gradientShift 3s linear infinite, rainbowShift 8s linear infinite;
+    background-size: 100% auto;
   }
 
   .animate-flag-wave {

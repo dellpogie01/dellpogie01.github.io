@@ -44,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode = true }) => {
           {/* User profile picture: Light purple border (responsive size) */}
           <div 
             onClick={scrollToTop}
-            className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] lg:w-[72px] lg:h-[72px] rounded-xl border-2 border-purple-300/90 p-[1.5px] shadow-lg shadow-purple-500/25 hover:scale-105 transition-transform flex-shrink-0 cursor-pointer overflow-hidden bg-slate-900/60"
+            className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] lg:w-[72px] lg:h-[72px] rounded-xl border-2 border-purple-300/90 p-[1.5px] shadow-lg shadow-purple-500/25 flex-shrink-0 cursor-pointer overflow-hidden bg-slate-900/60"
             title="DELIO LABADDAN"
           >
             <img 
@@ -59,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode = true }) => {
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               <span 
                 onClick={scrollToTop}
-                className="font-extrabold text-base sm:text-xl lg:text-2xl tracking-tight bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-500 bg-clip-text text-transparent animate-gradient-text leading-tight cursor-pointer whitespace-nowrap"
+                className="font-extrabold text-base sm:text-xl lg:text-2xl tracking-tight bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-500 bg-clip-text text-transparent leading-tight cursor-pointer whitespace-nowrap"
               >
                 DELIO LABADDAN
               </span>
@@ -76,22 +76,22 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode = true }) => {
               </a>
             </div>
 
-            {/* Subtitle: Same text color and animation as "Discover..." (rainbow text gradient) */}
+            {/* Subtitle: Same text color as "Discover..." */}
             <span 
-              className="text-[11px] sm:text-xs lg:text-sm font-normal tracking-normal mt-0.5 bg-gradient-to-r from-cyan-300 via-pink-300 to-violet-300 bg-clip-text text-transparent animate-rainbow-text"
+              className="text-[11px] sm:text-xs lg:text-sm font-normal tracking-normal mt-0.5 bg-gradient-to-r from-cyan-300 via-pink-300 to-violet-300 bg-clip-text text-transparent"
               style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
             >
               A DOS era programmer. Still building.
             </span>
 
-            {/* Email link: Philippine flag + same rainbow gradient color & animation */}
+            {/* Email link: Philippine flag + same rainbow gradient color */}
             <div className="mt-0.5 sm:mt-1 flex items-center">
               <a 
                 href="mailto:juanmediahubph@gmail.com" 
                 className="inline-flex items-center gap-1.5 sm:gap-2 cursor-pointer group/email hover:opacity-90 transition-opacity min-w-0"
               >
-                <AnimatedPhilippineFlag className="w-4 h-3 sm:w-5 sm:h-3.5 inline-block group-hover/email:scale-110 transition-transform flex-shrink-0" />
-                <span className="text-[11px] sm:text-xs lg:text-sm font-mono font-medium bg-gradient-to-r from-cyan-300 via-pink-300 to-violet-300 bg-clip-text text-transparent animate-rainbow-text hover:underline truncate">
+                <AnimatedPhilippineFlag className="w-4 h-3 sm:w-5 sm:h-3.5 inline-block flex-shrink-0" />
+                <span className="text-[11px] sm:text-xs lg:text-sm font-mono font-medium bg-gradient-to-r from-cyan-300 via-pink-300 to-violet-300 bg-clip-text text-transparent hover:underline truncate">
                   juanmediahubph@gmail.com
                 </span>
               </a>

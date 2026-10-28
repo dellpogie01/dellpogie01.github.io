@@ -606,16 +606,16 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
           <div className="md:col-span-7 w-full text-left pt-6 sm:pt-10 lg:pt-16">
             {/* "Small Ideas. Meaningful Apps." with plenty of space below so 'g' and 'pp' are never cut */}
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight leading-[1.25] sm:leading-[1.2] pb-1.5 sm:pb-2 flex flex-wrap items-baseline gap-x-2.5 sm:gap-x-3 text-left">
-              <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-500 bg-clip-text text-transparent animate-gradient-text whitespace-nowrap pb-1 inline-block">
+              <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-500 bg-clip-text text-transparent whitespace-nowrap pb-1 inline-block">
                 Small Ideas.
               </span>
-              <span className="bg-gradient-to-r from-cyan-400 via-violet-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent animate-gradient-text whitespace-nowrap pb-1 inline-block">
+              <span className="bg-gradient-to-r from-cyan-400 via-violet-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent whitespace-nowrap pb-1 inline-block">
                 Meaningful Apps.
               </span>
             </h1>
 
             {/* Subtitle placed immediately near title */}
-            <p className="mt-0.5 text-xs sm:text-sm lg:text-base text-slate-300 max-w-2xl mx-0 text-left font-light leading-snug bg-gradient-to-r from-cyan-300 via-pink-300 to-violet-300 bg-clip-text text-transparent animate-rainbow-text">
+            <p className="mt-0.5 text-xs sm:text-sm lg:text-base text-slate-300 max-w-2xl mx-0 text-left font-light leading-snug bg-gradient-to-r from-cyan-300 via-pink-300 to-violet-300 bg-clip-text text-transparent">
               Discover my collection of Android apps, games, and everyday tools.
             </p>
           </div>
@@ -690,7 +690,7 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
 
             {/* MY TECH STACK Section: Clear space above heading, exact same font and font size with DELIO LABADDAN */}
             <div className="w-full pt-2 sm:pt-3 lg:pt-3.5 space-y-1.5">
-              <h2 className="font-extrabold text-base sm:text-xl lg:text-2xl tracking-tight bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-500 bg-clip-text text-transparent animate-gradient-text leading-tight">
+              <h2 className="font-extrabold text-base sm:text-xl lg:text-2xl tracking-tight bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-500 bg-clip-text text-transparent leading-tight">
                 MY TECH STACK
               </h2>
               <TechStack3DGrid />
