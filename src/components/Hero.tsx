@@ -617,7 +617,6 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
             {/* Subtitle placed immediately near title */}
             <p className="mt-0.5 text-xs sm:text-sm lg:text-base text-slate-300 max-w-2xl mx-0 text-left font-light leading-snug bg-gradient-to-r from-cyan-300 via-pink-300 to-violet-300 bg-clip-text text-transparent animate-rainbow-text">
               Discover my collection of Android apps, games, and everyday tools.
-              <span className="text-[11px] font-mono text-cyan-400/80 sm:hidden ml-1">• Swipe apps below ➔</span>
             </p>
           </div>
 
@@ -650,9 +649,9 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
           {/* Section 3: App Showcase, Tech Stack, Coffee & Connect (Row 2 Left on tablet/desktop, Below 3D phone on mobile) */}
           <div className="md:col-span-7 space-y-3.5 sm:space-y-4 text-left flex flex-col items-start w-full">
             
-            {/* App Showcase Icons below "Discover..." (All icons in 1 horizontal line at 3/4 size, touch-scrollable) */}
+            {/* App Showcase Icons below "Discover..." (All icons in responsive wrapping rows, fully visible) */}
             <div className="w-full pt-0.5">
-              <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-1 px-0.5 touch-pan-x">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 py-1 px-0.5">
                 {[
                   { src: `${import.meta.env.BASE_URL}apps/learn-oop.png`, alt: 'Learn OOP with Kotlin' },
                   { src: `${import.meta.env.BASE_URL}apps/touchscreen-test.png`, alt: 'Touchscreen Test Tool' },
