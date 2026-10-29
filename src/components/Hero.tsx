@@ -653,6 +653,7 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
             <div className="w-full pt-0.5">
               <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 py-1 px-0.5">
                 {[
+                  { src: `${import.meta.env.BASE_URL}apps/mp3-player.png`, alt: 'MP3 Player' },
                   { src: `${import.meta.env.BASE_URL}apps/otg-explorer.png`, alt: 'OTG Explorer' },
                   { src: `${import.meta.env.BASE_URL}apps/learn-oop.png`, alt: 'Learn OOP with Kotlin' },
                   { src: `${import.meta.env.BASE_URL}apps/touchscreen-test.png`, alt: 'Touchscreen Test Tool' },
