@@ -616,7 +616,7 @@ export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
 
             {/* Subtitle placed immediately near title */}
             <p className="mt-0.5 text-xs sm:text-sm lg:text-base text-slate-300 max-w-2xl mx-0 text-left font-light leading-snug bg-gradient-to-r from-cyan-300 via-pink-300 to-violet-300 bg-clip-text text-transparent">
-              Discover my collection of Android apps, games, and everyday tools.
+              I am an indie developer. Discover my collection of Android apps, games, and everyday tools.
             </p>
           </div>
 
